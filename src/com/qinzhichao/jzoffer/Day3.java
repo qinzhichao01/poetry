@@ -140,35 +140,24 @@ public class Day3 {
      * 给定一个正整数数组 nums和整数 k ，请找出该数组内乘积小于 k 的连续的子数组的个数。
      */
     public int numSubarrayProductLessThanK(int[] nums, int k) {
-        int res = 0;
-        int length = nums.length;
-        if (length == 0) {
-            return res;
+        int n = nums.length, ans = 0;
+        if (k <= 1) {
+            return 0;
         }
-        int product = 1;
-        int start = 0, end = 0;
-        while (start < length) {
-            if (product >= k) {
-                product = product / nums[start];
-                start++;
+        for (int i = 0, j = 0, cur = 1; i < n; i++) {
+            cur *= nums[i];
+            while (cur >= k) {
+                cur /= nums[j++];
             }
-            if (product < k && end < length) {
-                product = product * nums[end];
-                res++;
-                end++;
-            }else {
-                break;
-            }
+            ans += i - j + 1;
         }
-        return res;
+        return ans;
     }
 
 
-//    public static void main(String[] args) {
-//        int[] nums = new int[]{1, 2, 3, 4, 5};
-//        Day3 day3 = new Day3();
-//        System.out.println(day3.minSubArrayLen(11, nums));
-//        int[] nums2 = new int[]{10, 5, 2, 6};
-//        System.out.println(day3.numSubarrayProductLessThanK(nums2, 100));
-//    }
+    public static void main(String[] args) {
+        Day3 day3 = new Day3();
+        int[] nums = new int[]{10, 5, 2, 6};
+        day3.numSubarrayProductLessThanK(nums, 100);
+    }
 }
