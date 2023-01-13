@@ -54,6 +54,10 @@ public class Day4 {
         Day4 day4 = new Day4();
         int[] nums = new int[]{-1, -1, 1};
         int i = day4.subarraySum(nums, 0);
+
+        int[] nums2 = new int[]{1, 7, 3, 6, 5, 6};
+        int i1 = day4.pivotIndex(nums2);
+
         System.out.println(i);
     }
 
@@ -64,7 +68,13 @@ public class Day4 {
      * @param nums
      * @return
      */
+    /**
+     * 转化一下就是寻找区间内最长 0&1 相同
+     * @param nums
+     * @return
+     */
     public int findMaxLength(int[] nums) {
+
         return 1;
     }
 
@@ -78,8 +88,30 @@ public class Day4 {
      * @return
      */
 
+    /**
+     * 前缀和的套路
+     * @param nums
+     * @return
+     */
     public int pivotIndex(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        int[] sum = new int[nums.length + 1];
 
+        sum[0] = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int tem = sum[i] + nums[i];
+            int j = i + 1;
+            sum[j] = tem;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            int left = sum[i];
+            int right = sum[nums.length] - sum[i+1];
+            if (left == right) {
+                return i;
+            }
+        }
         return -1;
     }
 }
