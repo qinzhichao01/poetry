@@ -37,7 +37,6 @@ public class Day4 {
         if (nums == null || nums.length == 0) {
             return ans;
         }
-
         Map<Integer, Integer> map = new HashMap<>();
         map.put(0, 1);
         int sum = 0;
@@ -46,7 +45,6 @@ public class Day4 {
             ans = ans + map.getOrDefault(sum - k, 0);
             map.put(sum, map.getOrDefault(sum, 0) + 1);
         }
-
         return ans;
     }
 
@@ -58,6 +56,8 @@ public class Day4 {
         int[] nums2 = new int[]{1, 7, 3, 6, 5, 6};
         int i1 = day4.pivotIndex(nums2);
 
+        int[] zeroOne = new int[]{1, 0};
+        int maxLength = day4.findMaxLength(zeroOne);
         System.out.println(i);
     }
 
@@ -70,12 +70,44 @@ public class Day4 {
      */
     /**
      * 转化一下就是寻找区间内最长 0&1 相同
+     *
      * @param nums
      * @return
      */
     public int findMaxLength(int[] nums) {
+        int[] zeroSum = new int[nums.length + 1];
+        int[] oneSum = new int[nums.length + 1];
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 1) {
+                zeroSum[i + 1] = zeroSum[i];
+                oneSum[i + 1] = oneSum[i] + 1;
+            } else {
+                zeroSum[i + 1] = zeroSum[i] + 1;
+                oneSum[i + 1] = oneSum[i];
+            }
+        }
+        int res = 0;
+        int i = 0;
+        int j = nums.length;
+        while (i < j) {
+        }
 
-        return 1;
+//        for (int i = 0; i < nums.length; i++) {
+//            for (int j = i + 1; j < nums.length; j++) {
+//                int one = oneSum[j+1] - oneSum[i];
+//                int zero = zeroSum[j+1] - zeroSum[i];
+//                if (one == zero) {
+//                    res = Math.max(res, j - i + 1);
+//                }
+//            }
+//        }
+        return res;
+    }
+
+
+    // 转化为前缀和
+    public int findMaxLength2(int[] nums) {
+        return -1;
     }
 
     /**
@@ -90,6 +122,7 @@ public class Day4 {
 
     /**
      * 前缀和的套路
+     *
      * @param nums
      * @return
      */
@@ -107,7 +140,7 @@ public class Day4 {
         }
         for (int i = 0; i < nums.length; i++) {
             int left = sum[i];
-            int right = sum[nums.length] - sum[i+1];
+            int right = sum[nums.length] - sum[i + 1];
             if (left == right) {
                 return i;
             }

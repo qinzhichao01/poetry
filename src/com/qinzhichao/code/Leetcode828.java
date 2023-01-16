@@ -1,4 +1,4 @@
-package com.qinzhichao;
+package com.qinzhichao.code;
 
 /**
  * @author qinzhichao02
