@@ -1,5 +1,7 @@
 package com.qinzhichao.ds.list;
 
+import com.qinzhichao.common.ListNode;
+
 /**
  * 找到链表的中间节点
  *

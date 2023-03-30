@@ -1,8 +1,6 @@
 package com.qinzhichao.ds.list;
 
-import org.w3c.dom.Node;
-
-import java.util.List;
+import com.qinzhichao.common.ListNode;
 
 /**
  * 删除链表的倒数第 N 个结点

@@ -1,5 +1,7 @@
 package com.qinzhichao.ds.list;
 
+import com.qinzhichao.common.ListNode;
+
 /**
  * @author qinzhichao02
  * create 2023/3/26 14:07

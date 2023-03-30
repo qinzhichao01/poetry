@@ -1,7 +1,6 @@
 package com.qinzhichao.ds.list;
 
-import java.util.List;
-import java.util.PriorityQueue;
+import com.qinzhichao.common.ListNode;
 
 /**
  * 合并两个有序链表

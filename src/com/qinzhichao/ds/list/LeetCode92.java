@@ -1,5 +1,7 @@
 package com.qinzhichao.ds.list;
 
+import com.qinzhichao.common.ListNode;
+
 import java.util.Stack;
 
 /**
