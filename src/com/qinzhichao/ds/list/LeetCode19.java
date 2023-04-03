@@ -49,7 +49,7 @@ public class LeetCode19 {
      * @return
      */
     public ListNode removeNthFromEnd2(ListNode head, int n) {
-        ListNode temp = new ListNode();
+        ListNode temp = new ListNode(-1);
         temp.next = head;
         int count = n;
         ListNode node = temp;

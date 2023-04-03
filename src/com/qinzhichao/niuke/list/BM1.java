@@ -2,9 +2,7 @@ package com.qinzhichao.niuke.list;
 
 import com.qinzhichao.common.ListNode;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @author qinzhichao
@@ -159,7 +157,7 @@ public class BM1 {
         ListNode slow = head;
         ListNode fast = head;
 
-        while (fast!=null && fast.next != null) {
+        while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
             if (slow == fast) {
@@ -171,4 +169,272 @@ public class BM1 {
     }
 
 
+    /**
+     * BM7 链表中环的入口结点
+     *
+     * @param pHead
+     * @return
+     */
+
+    public ListNode EntryNodeOfLoop(ListNode pHead) {
+        if (pHead == null || pHead.next == null) {
+            return null;
+        }
+        Set<ListNode> set = new HashSet<>();
+
+        ListNode node = pHead;
+        while (node != null) {
+            if (set.contains(node)) {
+                return node;
+            }
+            set.add(node);
+            node = node.next;
+        }
+        return null;
+    }
+
+    public ListNode EntryNodeOfLoop2(ListNode pHead) {
+        if (pHead == null || pHead.next == null) {
+            return null;
+        }
+        ListNode fast = pHead;
+        ListNode slow = pHead;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (slow == fast) {
+                break;
+            }
+        }
+        if (fast == null || fast.next == null) {
+            return null;
+        }
+        slow = pHead;
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow;
+    }
+
+
+    /**
+     * BM8 链表中倒数最后k个结点
+     *
+     * @param pHead ListNode类
+     * @param k     int整型
+     * @return ListNode类
+     */
+    public ListNode FindKthToTail(ListNode pHead, int k) {
+        // write code here
+
+        ListNode dumpy = new ListNode(-1);
+        dumpy.next = pHead;
+        ListNode fast = dumpy;
+        ListNode slow = dumpy;
+        for (int i = 0; i < k; i++) {
+            fast = fast.next;
+            if (fast == null) {
+                return null;
+            }
+        }
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow;
+    }
+
+
+    /**
+     * BM9 删除链表的倒数第n个节点
+     *
+     * @param head ListNode类
+     * @param n    int整型
+     * @return ListNode类
+     */
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+
+        ListNode dumpy = new ListNode(-1);
+        dumpy.next = head;
+        ListNode fast = dumpy;
+        ListNode slow = dumpy;
+        for (int i = 0; i < n - 1; i++) {
+            fast = fast.next;
+            if (fast == null) {
+                return null;
+            }
+        }
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next = slow.next.next;
+        return dumpy.next;
+    }
+
+
+    /**
+     * BM10 两个链表的第一个公共结点
+     *
+     * @param pHead1
+     * @param pHead2
+     * @return
+     */
+    public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
+        Set<ListNode> nodes = new HashSet<>();
+        while (pHead1 != null) {
+            nodes.add(pHead1);
+            pHead1 = pHead1.next;
+        }
+        while (pHead2 != null) {
+            if (nodes.contains(pHead2)) {
+                return pHead2;
+            }
+            pHead2 = pHead2.next;
+        }
+        return null;
+    }
+
+
+    public ListNode FindFirstCommonNode2(ListNode pHead1, ListNode pHead2) {
+
+        ListNode node1 = pHead1;
+        ListNode node2 = pHead2;
+        while (node2 != node1) {
+            if (node1 == null) {
+                node1 = pHead2;
+            } else {
+                node1 = node1.next;
+            }
+            if (node2 == null) {
+                node2 = pHead1;
+
+            } else {
+                node2 = node2.next;
+            }
+        }
+        return node1;
+    }
+
+
+    public ListNode addInList(ListNode head1, ListNode head2) {
+
+
+        if (head1 == null) {
+            return head2;
+        }
+        if (head2 == null) {
+            return head1;
+        }
+
+        ListNode node1 = reverseList(head1);
+        ListNode node2 = reverseList(head2);
+
+        ListNode dumpy = new ListNode(-1);
+        ListNode node = dumpy;
+
+        ListNode temp = new ListNode(0);
+        while (node2 != null || node1 != null) {
+            if (node1 == null) {
+                node1 = new ListNode(0);
+            }
+            if (node2 == null) {
+                node2 = new ListNode(0);
+            }
+            int val = temp.val + node2.val + node1.val;
+            temp.val = 0;
+            if (val >= 10) {
+                temp.val = 1;
+                val = val - 10;
+            }
+            node.next = new ListNode(val);
+            node = node.next;
+            node2 = node2.next;
+            node1 = node1.next;
+        }
+        if (temp.val != 0) {
+            node.next = temp;
+        }
+
+        return reverseList(dumpy.next);
+    }
+
+
+    /**
+     * BM12 单链表的排序
+     *
+     * @param head ListNode类 the head node
+     * @return ListNode类
+     */
+    public ListNode sortInList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        if (head.next.next == null) {
+            ListNode next = head.next;
+            head.next = null;
+            return merge(head, next);
+        }
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        ListNode next = slow.next;
+        slow.next = null;
+        ListNode node1 = sortInList(next);
+        ListNode node2 = sortInList(head);
+        return merge(node1, node2);
+    }
+
+    private ListNode merge(ListNode node1, ListNode node2) {
+        ListNode dumpy = new ListNode(-1);
+        ListNode node = dumpy;
+        while (node1 != null || node2 != null) {
+            if (node1 == null) {
+                node.next = node2;
+                break;
+            }
+            if (node2 == null) {
+                node.next = node1;
+                break;
+            }
+            if (node1.val < node2.val) {
+                node.next = node1;
+                node1 = node1.next;
+            } else {
+                node.next = node2;
+                node2 = node2.next;
+            }
+            node = node.next;
+        }
+        return dumpy.next;
+    }
+
+
+    /**
+     * BM13 判断一个链表是否为回文结构
+     *
+     * @param head ListNode类 the head
+     * @return bool布尔型
+     */
+
+    private  ListNode left;
+    public boolean isPail(ListNode head) {
+        left = head;
+        return traverse(head);
+    }
+
+    private boolean traverse(ListNode head) {
+        if (head == null) {
+            return true;
+        }
+        boolean traverse = traverse(head.next);
+        boolean res = traverse && (head.val == left.val);
+        left = left.next;
+        return res;
+    }
 }
