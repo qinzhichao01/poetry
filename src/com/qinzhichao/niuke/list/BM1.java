@@ -68,6 +68,7 @@ public class BM1 {
      * @return ListNode类
      */
     public ListNode reverseKGroup(ListNode head, int k) {
+        return null;
         // write code here
     }
 

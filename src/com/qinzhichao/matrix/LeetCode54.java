@@ -17,31 +17,27 @@ public class LeetCode54 {
         int top = 0;
         int bottom = matrix.length - 1;
         List<Integer> res = new ArrayList<>();
-        while (res.size() < matrix.length * matrix[0].length) {
-            if (top <= bottom) {
-                for (int i = left; i < right; i++) {
-                    res.add(matrix[top][i]);
-                }
-                top++;
+        while (left <= right && top <= bottom) {
+            for (int i = left; i <= right; i++) {
+                res.add(matrix[top][i]);
             }
-            if (right >= left) {
-                for (int i = top + 1; i <= bottom; i++) {
-                    res.add(matrix[right][i]);
-                }
-                right--;
+            for (int i = top + 1; i <= bottom; i++) {
+                res.add(matrix[i][right]);
             }
-            if (bottom >= top) {
-                for (int i = right; i >= left; i--) {
+            if (left < right && top < bottom) {
+
+
+                for (int i = right - 1; i > left; i--) {
                     res.add(matrix[bottom][i]);
                 }
-                bottom--;
-            }
-            if (left <= right) {
                 for (int i = bottom; i > top; i--) {
                     res.add(matrix[i][left]);
                 }
-                left++;
             }
+            top++;
+            right--;
+            bottom--;
+            left++;
         }
         return res;
     }
