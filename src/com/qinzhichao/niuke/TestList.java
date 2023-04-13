@@ -1,4 +1,4 @@
-package com.qinzhichao.niuke.list;
+package com.qinzhichao.niuke;
 
 import com.qinzhichao.common.ListNode;
 
@@ -8,7 +8,7 @@ import java.util.*;
  * @author qinzhichao
  * created at 2023/3/30 00:28
  **/
-public class BM1 {
+public class TestList {
 
 
     /**
@@ -67,6 +67,7 @@ public class BM1 {
      */
     public ListNode reverseKGroup(ListNode head, int k) {
         // write code here
+        return null;
     }
 
 
@@ -422,7 +423,8 @@ public class BM1 {
      * @return bool布尔型
      */
 
-    private  ListNode left;
+    private ListNode left;
+
     public boolean isPail(ListNode head) {
         left = head;
         return traverse(head);
