@@ -1,8 +1,5 @@
 package com.qinzhichao.random;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 /**
  * @author qinzhichao
  * created at 2023/1/8 00:12
@@ -28,6 +25,5 @@ public class Leetcode2735 {
         int nums[] = {0};
         int xor = leetcode2735.findMaximumXOR(nums);
         System.out.println(xor);
-
     }
 }

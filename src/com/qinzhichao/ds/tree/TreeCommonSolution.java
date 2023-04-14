@@ -26,6 +26,13 @@ public class TreeCommonSolution {
         return res;
     }
 
+
+    /**
+     * 层序遍历二叉树
+     *
+     * @param root
+     * @return
+     */
     public List<List<Integer>> levelTraverse(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         if (root == null) {
