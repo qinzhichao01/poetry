@@ -1,6 +1,7 @@
 package com.qinzhichao.code;
 
 import java.util.*;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @author qinzhichao
@@ -12,6 +13,7 @@ public class LeetCode40 {
         if (candidates == null || candidates.length == 0) {
             return res;
         }
+        // 只能使用一次，可以先用 set 过滤重复数字
         Arrays.sort(candidates);
         Deque<Integer> path = new ArrayDeque<>(candidates.length);
         dfs(candidates, candidates.length, 0, target, res, path);
@@ -24,9 +26,11 @@ public class LeetCode40 {
             return;
         }
         for (int i = begin; i < length; i++) {
+            // 最小的不行，后面的也不行
             if (target - candidates[i] < 0) {
                 break;
             }
+            // 去掉第一个外重复的选项
             if (i > begin && candidates[i] == candidates[i - 1]) {
                 continue;
             }

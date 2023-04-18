@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 给一个不包含重复数字的数组，给出全排列
  * @author qinzhichao
  * created at 2023/3/22 23:20
  **/
@@ -14,7 +15,6 @@ public class LeetCode46 {
             return res;
         }
         List<Integer> list = new ArrayList<>();
-
         permute(nums, list, res);
         return res;
     }
@@ -32,6 +32,4 @@ public class LeetCode46 {
             }
         }
     }
-
-
 }

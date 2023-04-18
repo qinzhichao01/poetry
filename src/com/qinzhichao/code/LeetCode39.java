@@ -1,9 +1,10 @@
 package com.qinzhichao.code;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-/**
+/** 选择和等于 target 的组合个数
  * <a href="https://leetcode.cn/problems/combination-sum/">...</a>
  *
  * @author qinzhichao

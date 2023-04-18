@@ -28,7 +28,6 @@ public class LeetCode17 {
     private void saveProblem(Set<String> res, StringBuilder stringBuilder, Map<Integer, List<String>> map, List<Integer> integers, int i) {
         if (integers.size() == i) {
             if (stringBuilder.length() > 0) {
-
                 res.add(stringBuilder.toString());
             }
             return;

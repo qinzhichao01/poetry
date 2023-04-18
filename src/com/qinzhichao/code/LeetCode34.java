@@ -56,7 +56,6 @@ class LeetCode34 {
         if (nums[mid] > target) {
             return getTargetIndex(nums, start, mid, target);
         } else {
-            System.out.println(start + "  " + end);
             return getTargetIndex(nums, mid, end, target);
         }
     }
