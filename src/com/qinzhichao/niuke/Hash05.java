@@ -39,14 +39,12 @@ public class Hash05 {
     public int MoreThanHalfNum_Solution(int[] array) {
         int count = 0;
         Integer candidate = null;
-
         for (int num : array) {
             if (count == 0) {
                 candidate = num;
             }
             count += (num == candidate) ? 1 : -1;
         }
-
         return candidate;
     }
 

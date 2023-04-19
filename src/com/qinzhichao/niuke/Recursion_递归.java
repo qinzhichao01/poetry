@@ -1,9 +1,6 @@
 package com.qinzhichao.niuke;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Deque;
+import java.util.*;
 
 /**
  * @author qinzhichao
@@ -68,6 +65,12 @@ public class Recursion_递归 {
     }
 
 
+    /**
+     * 岛屿的数量
+     *
+     * @param grid
+     * @return
+     */
     public int solve(char[][] grid) {
         // write code here
         int res = 0;
@@ -97,5 +100,157 @@ public class Recursion_递归 {
         if (j - 1 >= 0 && grid[i][j - 1] == '1') {
             change(grid, i, j - 1);
         }
+    }
+
+
+    private ArrayList<String> ret = new ArrayList<>();
+
+    public ArrayList<String> Permutation2(String str) {
+        if (str.length() == 0)
+            return ret;
+        char[] chars = str.toCharArray();
+        Arrays.sort(chars);
+        backtracking(chars, new boolean[chars.length], new StringBuilder());
+        return ret;
+    }
+
+    private void backtracking(char[] chars, boolean[] hasUsed, StringBuilder s) {
+        if (s.length() == chars.length) {
+            ret.add(s.toString());
+            return;
+        }
+        for (int i = 0; i < chars.length; i++) {
+            if (hasUsed[i])
+                continue;
+            if (i != 0 && chars[i] == chars[i - 1] && hasUsed[i - 1]) /* 保证不重复 */
+                continue;
+            hasUsed[i] = true;
+            s.append(chars[i]);
+            backtracking(chars, hasUsed, s);
+            s.deleteCharAt(s.length() - 1);
+            hasUsed[i] = false;
+        }
+    }
+
+
+    /**
+     * 字符串全排列
+     */
+
+    public ArrayList<String> Permutation(String str) {
+
+        ArrayList<String> res = new ArrayList<>();
+        if (str == null | str.length() == 0) {
+            return res;
+        }
+        getStringPer(res, new StringBuffer(), new boolean[str.length()], str);
+        return res;
+    }
+
+    private void getStringPer(ArrayList<String> res, StringBuffer stringBuffer, boolean[] used, String str) {
+
+        if (stringBuffer.length() == str.length()) {
+            if (!res.contains(stringBuffer.toString())) {
+                res.add(stringBuffer.toString());
+            }
+            return;
+        }
+        for (int i = 0; i < str.length(); i++) {
+            if (used[i]) {
+                continue;
+            }
+            char c = str.charAt(i);
+            stringBuffer.append(c);
+            used[i] = true;
+            getStringPer(res, stringBuffer, used, str);
+            stringBuffer.deleteCharAt(stringBuffer.length() - 1);
+            used[i] = false;
+        }
+    }
+
+
+    /**
+     * N 皇后问题
+     * 暴力解法，在每个位置都放宜宾
+     */
+
+    List<List<String>> nQueenRes = new ArrayList<>();
+
+    public int Nqueen(int n) {
+        // write code here
+        char[][] chessboard = new char[n][n];
+        for (char[] c : chessboard) {
+            Arrays.fill(c, '.');
+        }
+        backTrack(n, 0, chessboard);
+        return nQueenRes.size();
+    }
+
+    public void backTrack(int n, int row, char[][] chessboard) {
+        if (row == n) {
+            nQueenRes.add(Array2List(chessboard));
+            return;
+        }
+        for (int col = 0; col < n; ++col) {
+            if (isValid(row, col, n, chessboard)) {
+                chessboard[row][col] = 'Q';
+                backTrack(n, row + 1, chessboard);
+                chessboard[row][col] = '.';
+            }
+        }
+    }
+
+    public List Array2List(char[][] chessboard) {
+        List<String> list = new ArrayList<>();
+
+        for (char[] c : chessboard) {
+            list.add(String.copyValueOf(c));
+        }
+        return list;
+    }
+
+    public boolean isValid(int row, int col, int n, char[][] chessboard) {
+        // 检查列
+        for (int i = 0; i < row; ++i) { // 相当于剪枝
+            if (chessboard[i][col] == 'Q') {
+                return false;
+            }
+        }
+
+        // 检查45度对角线
+        for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+            if (chessboard[i][j] == 'Q') {
+                return false;
+            }
+        }
+
+        // 检查135度对角线
+        for (int i = row - 1, j = col + 1; i >= 0 && j <= n - 1; i--, j++) {
+            if (chessboard[i][j] == 'Q') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    /**
+     * 括号生成，有效
+     *
+     * @param n
+     * @return
+     */
+    public ArrayList<String> generateParenthesis(int n) {
+        //
+
+    }
+
+
+    public static void main(String[] args) {
+        Recursion_递归 recursion = new Recursion_递归();
+        ArrayList<String> qwertyuio = recursion.Permutation("12345678");
+        System.out.println(qwertyuio);
+
+
     }
 }
