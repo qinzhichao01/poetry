@@ -69,6 +69,4 @@ public class Leetcode53 {
         System.out.println(res);
         System.out.println(res2);
     }
-
-
 }

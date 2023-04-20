@@ -18,7 +18,6 @@ public class TestList {
      * @return
      */
     public ListNode reverseList(ListNode head) {
-
         if (head == null || head.next == null) {
             return head;
         }
@@ -228,7 +227,6 @@ public class TestList {
      */
     public ListNode FindKthToTail(ListNode pHead, int k) {
         // write code here
-
         ListNode dumpy = new ListNode(-1);
         dumpy.next = pHead;
         ListNode fast = dumpy;

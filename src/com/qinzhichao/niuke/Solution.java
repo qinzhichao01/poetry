@@ -33,7 +33,5 @@ public class Solution {
             //偶数个
             return (double) (min.peek() + max.peek()) / 2;
     }
-
-
 }
 

@@ -25,19 +25,19 @@ public class LeetCode17 {
         return new ArrayList<>(res);
     }
 
-    private void saveProblem(Set<String> res, StringBuilder stringBuilder, Map<Integer, List<String>> map, List<Integer> integers, int i) {
-        if (integers.size() == i) {
+    private void saveProblem(Set<String> res, StringBuilder stringBuilder, Map<Integer, List<String>> map, List<Integer> integers, int index) {
+        if (integers.size() == index) {
             if (stringBuilder.length() > 0) {
                 res.add(stringBuilder.toString());
             }
             return;
         }
-        Integer integer = integers.get(i);
+        Integer integer = integers.get(index);
         List<String> list = map.get(integer);
         for (String s : list) {
             StringBuilder sb = new StringBuilder(stringBuilder.toString());
             sb.append(s);
-            saveProblem(res, sb, map, integers, i + 1);
+            saveProblem(res, sb, map, integers, index + 1);
         }
     }
 
