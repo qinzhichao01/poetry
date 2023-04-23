@@ -242,7 +242,7 @@ public class Recursion_递归 {
      */
     public ArrayList<String> generateParenthesis(int n) {
         //
-
+        return null;
     }
 
 
