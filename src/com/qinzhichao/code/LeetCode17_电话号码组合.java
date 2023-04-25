@@ -9,7 +9,7 @@ import java.util.*;
  * @author qinzhichao
  * created at 2023/3/21 00:35
  **/
-public class LeetCode17 {
+public class LeetCode17_电话号码组合 {
 
     public List<String> letterCombinations(String digits) {
         Map<Integer, List<String>> map = new HashMap<>();
@@ -64,8 +64,8 @@ public class LeetCode17 {
     }
 
     public static void main(String[] args) {
-        LeetCode17 leetCode17 = new LeetCode17();
-        List<String> list = leetCode17.letterCombinations("23");
+        LeetCode17_电话号码组合 leetCode17电话号码组合 = new LeetCode17_电话号码组合();
+        List<String> list = leetCode17电话号码组合.letterCombinations("23");
         System.out.println(list);
 
     }
