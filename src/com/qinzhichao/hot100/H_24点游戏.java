@@ -30,7 +30,7 @@ public class H_24点游戏 {
             }
             return false;
         }
-        boolean bool =false;
+        boolean bool = false;
         for (int i = 0; i < doubleList.size(); i++) {
             for (int j = i + 1; j < doubleList.size(); j++) {
                 List<Double> res = cal(doubleList.get(i), doubleList.get(j));
@@ -62,6 +62,5 @@ public class H_24点游戏 {
         list.add(b - a);
         list.add(b / a);
         return list;
-
     }
 }
