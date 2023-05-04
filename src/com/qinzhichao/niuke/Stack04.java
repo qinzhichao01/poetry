@@ -58,7 +58,6 @@ public class Stack04 {
         while (count < num.length) {
             //对每次操作，找到最大值（用优先队列的大顶堆），然后向后滑动（出堆一个，入堆一个）
             res.add(queue.peek());
-            System.out.println(count - size);
             queue.remove(num[count - size]);
             queue.add(num[count]);
             count++;
