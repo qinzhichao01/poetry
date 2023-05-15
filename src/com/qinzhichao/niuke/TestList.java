@@ -413,6 +413,24 @@ public class TestList {
         return dumpy.next;
     }
 
+    public ListNode sortList(ListNode head) {
+        List<Integer> nums = new ArrayList<>();
+        ListNode node = head;
+        while (node != null) {
+            nums.add(node.val);
+            node = node.next;
+        }
+        Collections.sort(nums);
+        node = head;
+        int index = 0;
+        while (node != null) {
+            node.val = nums.get(index);
+            index++;
+            node = node.next;
+        }
+        return head;
+    }
+
 
     /**
      * BM13 判断一个链表是否为回文结构
