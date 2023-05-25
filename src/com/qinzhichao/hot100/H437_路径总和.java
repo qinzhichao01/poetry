@@ -10,41 +10,30 @@ import java.util.Deque;
  * create 2023/5/5 09:13
  */
 public class H437_路径总和 {
-    int count = 0;
 
     public int pathSum(TreeNode root, int targetSum) {
-        pathSum3(root, targetSum);
-        return count;
-    }
-
-    private void pathSum3(TreeNode root, int targetSum) {
-        Deque<TreeNode> deque = new ArrayDeque<>();
-        deque.addLast(root);
-
-        while (!deque.isEmpty()) {
-            for (int i = 0; i < deque.size(); i++) {
-                TreeNode treeNode = deque.removeFirst();
-                pathSum2(treeNode, targetSum);
-                if (treeNode.left != null) {
-                    deque.addLast(treeNode.left);
-                }
-                if (treeNode.right != null) {
-                    deque.addLast(treeNode.right);
-                }
-            }
-        }
-    }
-
-    private void pathSum2(TreeNode root, int targetSum) {
         if (root == null) {
-            return;
+            return 0;
         }
-        if (targetSum ==root.val ) {
+        int ret = rootSum(root, targetSum);
+        ret += pathSum(root.left, targetSum);
+        ret += pathSum(root.right, targetSum);
+        return ret;
+
+    }
+
+    private int rootSum(TreeNode root, int targetSum) {
+        int count =0;
+        if (root == null) {
+            return count;
+        }
+        int val = root.val;
+        if (val == targetSum) {
             count++;
         }
-        pathSum2(root.left, targetSum - root.val);
-        pathSum2(root.right, targetSum - root.val);
+        count += rootSum(root.left, targetSum - val);
+        count += rootSum(root.right, targetSum - val);
+        return count;
     }
-
 
 }
