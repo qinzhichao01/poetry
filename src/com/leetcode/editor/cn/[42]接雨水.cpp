@@ -33,38 +33,41 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution
-{
+class Solution {
 public:
-    int trap(vector<int> &height)
-    {
+    int trap(vector<int> &height) {
         int size = height.size();
-        if (2 > size)
-        {
+        if (3 > size) {
             return 0;
         }
 
-        // 求左右两边的i最大值
-        vector<int> left_max(height);
-        vector<int> right_max(height);
-        for (int i = 1; i < size; ++i)
-        {
-            left_max[i] = max(left_max[i - 1], left_max[i]);
-            right_max[size - i - 1] = max(right_max[size - i - 1], right_max[size - i]);
-        }
-
-        int res = 0;
-        int left = 0;
-        int right = 0;
-        for (int i = 1; i < size - 1; ++i)
-        {
-            left = left_max[i - 1];
-            right = right_max[i + 1];
-            if (min(left, right) <= height[i])
-            {
-                continue;
+        vector<int> leftMax(height);
+        vector<int> rightMax(height);
+        for (int i = 1; i < size; i++) {
+            if (height[i] > leftMax[i - 1]) {
+                leftMax[i] = height[i];
+            } else {
+                leftMax[i] = leftMax[i - 1];
             }
-            res += (min(left, right) - height[i]) > 0 ? (min(left, right) - height[i]) : 0;
+
+            if (height[size - i - 1] > rightMax[size - i]) {
+                rightMax[size - i - 1] = height[size - i - 1];
+            } else {
+                rightMax[size - i - 1] = rightMax[size - i];
+            }
+        }
+        /*for (auto &val : leftMax) {
+            cout << val << " ";
+        }
+        cout << endl;
+        for (auto &val : rightMax) {
+            cout << val << " ";
+        }*/
+        int res = 0;
+        for (int i = 1; i < size - 1; i++) {
+            if (height[i] < leftMax[i - 1] && height[i] < rightMax[i + 1]) {
+                res += (min(leftMax[i - 1], rightMax[i + 1]) - height[i]);
+            }
         }
 
         return res;
