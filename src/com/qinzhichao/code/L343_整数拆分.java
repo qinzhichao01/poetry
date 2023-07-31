@@ -16,6 +16,7 @@ public class L343_整数拆分 {
         if (n == 3) {
             return 2;
         }
+
         return  integerBreak2(n);
 
     }
