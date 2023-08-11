@@ -91,7 +91,7 @@ public class Week343 {
 
 
     public int minimumCost(int[] start, int[] target, int[][] specialRoads) {
-
+        return 1;
     }
 
     public boolean isCompleteIndex(boolean[][] complete, int i, int j) {
