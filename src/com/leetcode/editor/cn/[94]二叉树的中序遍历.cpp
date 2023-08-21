@@ -53,10 +53,33 @@
  */
 
 #include <vector>
+#include <stack>
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode *root) {
-        treeSort(root);
+        /*treeSort(root);
+        return m_vecResult;*/
+
+        if(nullptr == root)
+        {
+            return m_vecResult;
+        }
+
+        // 采用栈的方法
+        std::stack<TreeNode*> stackTree;
+        while (!stackTree.empty() || root) {
+            while(root)
+            {
+                stackTree.push(root);
+                root = root->left;
+            }
+
+            root = stackTree.top();
+            stackTree.pop();
+            m_vecResult.emplace_back(root->val);
+            root = root->right;
+        }
+
         return m_vecResult;
     }
 
