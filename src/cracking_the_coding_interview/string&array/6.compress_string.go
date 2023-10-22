@@ -1,4 +1,4 @@
-package cracking_the_coding_interview
+package string_array
 
 import (
 	"strconv"

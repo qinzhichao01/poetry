@@ -1,7 +1,10 @@
 package cracking_the_coding_interview
 
-import "testing"
+import (
+	"poetry/src/cracking_the_coding_interview/string&array"
+	"testing"
+)
 
 func TestName(t *testing.T) {
-	oneEditAway("horse", "ros")
+	string_array.oneEditAway("horse", "ros")
 }

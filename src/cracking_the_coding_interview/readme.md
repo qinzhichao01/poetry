@@ -8,5 +8,8 @@
 5.  One Away LCCI https://leetcode.cn/problems/one-away-lcci/?envType=study-plan-v2&envId=cracking-the-coding-interview
 6. Compress String https://leetcode.cn/problems/compress-string-lcci/?envType=study-plan-v2&envId=cracking-the-coding-interview
 7. Rotate Matrix 
-8. Zero Matrix 
-9.String Rotation https://leetcode.cn/problems/string-rotation-lcci/?envType=study-plan-v2&envId=cracking-the-coding-interview
+8. Zero Matrix  https://leetcode.cn/problems/zero-matrix-lcci/?envType=study-plan-v2&envId=cracking-the-coding-interview\
+9. String Rotation https://leetcode.cn/problems/string-rotation-lcci/?envType=study-plan-v2&envId=cracking-the-coding-interview
+10.  Remove Duplicate Node https://leetcode.cn/problems/remove-duplicate-node-lcci/description/?envType=study-plan-v2&envId=cracking-the-coding-interview
+11.  Kth Node From End of List https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/?envType=study-plan-v2&envId=cracking-the-coding-interview
+12. Delete Middle Node https://leetcode.cn/problems/delete-middle-node-lcci/?envType=study-plan-v2&envId=cracking-the-coding-interview

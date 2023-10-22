@@ -1,4 +1,4 @@
-package cracking_the_coding_interview
+package string_array
 
 func isFlipedString(s1 string, s2 string) bool {
 	// 如果长度不等，一定不符合条件
