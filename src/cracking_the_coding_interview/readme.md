@@ -13,3 +13,4 @@
 10.  Remove Duplicate Node https://leetcode.cn/problems/remove-duplicate-node-lcci/description/?envType=study-plan-v2&envId=cracking-the-coding-interview
 11.  Kth Node From End of List https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/?envType=study-plan-v2&envId=cracking-the-coding-interview
 12. Delete Middle Node https://leetcode.cn/problems/delete-middle-node-lcci/?envType=study-plan-v2&envId=cracking-the-coding-interview
+13. 02.06. Palindrome Linked List LCCIhttps://leetcode.cn/problems/palindrome-linked-list-lcci/?envType=study-plan-v2&envId=cracking-the-coding-interview

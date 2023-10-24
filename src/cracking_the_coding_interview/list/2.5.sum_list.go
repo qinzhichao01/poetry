@@ -26,19 +26,21 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 	var temp = 0
 	var head = l1
+	var pre = l1
 	for l1 != nil {
 		temp = l1.Val + temp
 		if l2 != nil {
 			temp = temp + l2.Val
 			l2 = l2.Next
 		}
-
 		l1.Val = temp % 10
 		temp = temp / 10
+		pre = l1
 		l1 = l1.Next
 	}
+
 	if temp > 0 {
-		l1.Next = &ListNode{Val: temp}
+		pre.Next = &ListNode{Val: temp}
 	}
 
 	return head
