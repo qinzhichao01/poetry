@@ -15,7 +15,7 @@ func checkSubTree2(t1 *TreeNode, t2 *TreeNode) bool {
 	if t1 == nil {
 		return false
 	}
-	return isEqul(t1, t2) || isEqul(t1.Left, t2) || isEqul(t1.Right, t2)
+	return isEqul(t1, t2) || checkSubTree(t1.Left, t2) || checkSubTree(t1.Right, t2)
 }
 
 func isEqul(t1 *TreeNode, t2 *TreeNode) bool {
@@ -32,10 +32,11 @@ func isEqul(t1 *TreeNode, t2 *TreeNode) bool {
 func checkSubTree(t1 *TreeNode, t2 *TreeNode) bool {
 	if t2 == nil {
 		return true
-	} else if t1 != nil && t2 != nil {
-		return isSame(t1, t2) || checkSubTree(t1.Left, t2) || checkSubTree(t1.Right, t2)
 	}
-	return false
+	if t1 == nil {
+		return false
+	}
+	return isSame(t1, t2) || checkSubTree(t1.Left, t2) || checkSubTree(t1.Right, t2)
 }
 
 func isSame(p, q *TreeNode) bool {
