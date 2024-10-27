@@ -2,6 +2,8 @@ package com.qinzhichao.ds.list;
 
 import com.qinzhichao.common.ListNode;
 
+import java.util.Arrays;
+
 /**
  * 合并两个有序链表
  *
@@ -77,5 +79,41 @@ public class LeetCode21 {
         }
         return node;
     }
+
+
+    /**
+     * 最长回文字段串
+     *
+     * @param s
+     * @return
+     */
+    public String longestPalindrome(String s) {
+        if (s == null || s.length() <= 1) {
+            return s;
+        }
+
+        String res = "";
+        for (int i = 0; i < s.length() - 1; i++) {
+            String palindrome1 = getPalindrome2(i, i, s);
+            String palindrome2 = getPalindrome2(i, i + 1, s);
+            if (palindrome1.length() >= res.length()) {
+                res = palindrome1;
+            }
+            if (palindrome2.length() >= res.length()) {
+                res = palindrome2;
+            }
+        }
+        return res;
+    }
+
+    public String getPalindrome2(int start, int end, String s) {
+
+        while (start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)) {
+            start--;
+            end++;
+        }
+        return s.substring(start + 1, end);
+    }
+
 
 }
