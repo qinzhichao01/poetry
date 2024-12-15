@@ -116,4 +116,37 @@ public class LeetCode21 {
     }
 
 
+    // 动态规划的版本
+    public String longestPalindrome2(String s) {
+        if (s == null || s.length() < 2) {
+            return s;
+        }
+        int maxLen = 1, begin = 0;
+        boolean[][] dp = new boolean[s.length()][s.length()];
+        char[] charArray = s.toCharArray();
+        for (int i = 0; i < s.length(); i++) {
+            dp[i][i] = true; // 中间点一定是回文,因为一个字符肯定是
+        }
+        for (int i = 1; i < s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (charArray[i] != charArray[j]) {
+                    dp[j][i] = false;
+                } else {
+                    if (i - j < 3) {
+                        dp[j][i] = true;
+                    } else {
+                        dp[j][i] = dp[j + 1][i - 1];
+                    }
+                }
+                if (dp[j][i] && i - j + 1 > maxLen) {
+                    maxLen = i - j + 1;
+                    begin = j;
+                }
+            }
+        }
+        return s.substring(begin, begin + maxLen);
+
+    }
+
+
 }

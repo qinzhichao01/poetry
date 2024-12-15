@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/** 选择和等于 target 的组合个数
+/**
+ * 选择和等于 target 的组合个数
  * <a href="https://leetcode.cn/problems/combination-sum/">...</a>
  *
  * @author qinzhichao
@@ -17,11 +18,11 @@ public class LeetCode39 {
             return res;
         }
         List<Integer> list = new ArrayList<>();
-        combinationSum(candidates, 0, candidates.length, target, res, list);
+        combinationSum(candidates, 0, target, res, list);
         return res;
     }
 
-    private void combinationSum(int[] candidates, int index, int length, int target, ArrayList<List<Integer>> res, List<Integer> list) {
+    private void combinationSum(int[] candidates, int index, int target, ArrayList<List<Integer>> res, List<Integer> list) {
         if (target < 0) {
             return;
         }
@@ -29,10 +30,12 @@ public class LeetCode39 {
             res.add(new ArrayList<>(list));
             return;
         }
-        for (int i = index; i < length; i++) {
+        for (int i = index; i < candidates.length; i++) {
             ArrayList<Integer> integers = new ArrayList<>(list);
             integers.add(candidates[i]);
-            combinationSum(candidates, i, length, target - candidates[i], res, integers);
+            combinationSum(candidates, i, target - candidates[i], res, integers);
         }
     }
+
+
 }

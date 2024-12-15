@@ -15,10 +15,10 @@ public class H139_单词拆分 {
      * 并且 sub - word 也是一个合法的子串，那么就 sub 也是一个合法字符
      */
     public boolean wordBreak(String s, List<String> wordDict) {
-        if (s == null || s.length() == 0) {
+        if (s == null || s.isEmpty()) {
             return true;
         }
-        if (wordDict == null || wordDict.size() == 0) {
+        if (wordDict == null || wordDict.isEmpty()) {
             return false;
         }
         HashSet<String> strings = new HashSet<>(wordDict);
