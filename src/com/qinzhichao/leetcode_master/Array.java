@@ -100,6 +100,49 @@ public class Array {
     }
 
 
+    /**
+     * <a href="https://leetcode.cn/problems/spiral-matrix-ii/">...</a>
+     * 生成一个螺旋矩阵
+     */
+    public int[][] generateMatrix(int n) {
+
+        int[][] nums = new int[n][n];
+        int num = 1;
+        int left = 0;
+        int right = n - 1;
+        int top = 0;
+        int bottom = n - 1;
+        while (num <= n * n) {
+
+            for (int i = left; i <= right; i++) {
+                nums[top][i] = num;
+                num++;
+            }
+            top++;
+
+            for (int j = top; j <= bottom; j++) {
+                nums[j][right] = num;
+                num++;
+            }
+            right--;
+
+
+            for (int i = right; i >= left; i--) {
+                nums[bottom][i] = num;
+                num++;
+            }
+
+            bottom--;
+
+            for (int j = bottom; j >= top; j--) {
+                nums[j][left] = num;
+                num++;
+            }
+            left++;
+        }
+        return nums;
+
+    }
 
 
 }
