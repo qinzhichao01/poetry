@@ -27,7 +27,7 @@ public class LeetCode17_电话号码组合 {
 
     private void saveProblem(Set<String> res, StringBuilder stringBuilder, Map<Integer, List<String>> map, List<Integer> integers, int index) {
         if (integers.size() == index) {
-            if (stringBuilder.length() > 0) {
+            if (!stringBuilder.isEmpty()) {
                 res.add(stringBuilder.toString());
             }
             return;
@@ -42,25 +42,17 @@ public class LeetCode17_电话号码组合 {
     }
 
     private List<String> getStringByNum(int num) {
-        switch (num) {
-            case 2:
-                return List.of("a", "b", "c");
-            case 3:
-                return List.of("d", "e", "f");
-            case 4:
-                return List.of("g", "h", "i");
-            case 5:
-                return List.of("j", "k", "l");
-            case 6:
-                return List.of("m", "n", "o");
-            case 7:
-                return List.of("p", "q", "r", "s");
-            case 8:
-                return List.of("t", "u", "v");
-            case 9:
-                return List.of("x", "y", "z");
-        }
-        return List.of();
+        return switch (num) {
+            case 2 -> List.of("a", "b", "c");
+            case 3 -> List.of("d", "e", "f");
+            case 4 -> List.of("g", "h", "i");
+            case 5 -> List.of("j", "k", "l");
+            case 6 -> List.of("m", "n", "o");
+            case 7 -> List.of("p", "q", "r", "s");
+            case 8 -> List.of("t", "u", "v");
+            case 9 -> List.of("x", "y", "z");
+            default -> List.of();
+        };
     }
 
     public static void main(String[] args) {

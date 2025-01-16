@@ -1,9 +1,6 @@
 package com.qinzhichao.leetcode_master;
 
-import java.util.Arrays;
-import java.util.Map;
-
-public class Array {
+public class C_Array {
 
 
     // 原地移除元素-- 双指针
