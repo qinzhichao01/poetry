@@ -65,4 +65,26 @@ public class C_List {
         return dummy.next;
     }
 
+
+    public String reverseStr(String S, int k) {
+        char[] s = S.toCharArray();
+        int n = s.length;
+        for (int i = 0; i < n; i += k * 2) {
+            int left = i;
+            int right = Math.min(i + k, n) - 1;
+            while (left < right) {
+                char tmp = s[left];
+                s[left++] = s[right];
+                s[right--] = tmp;
+            }
+        }
+        return new String(s);
+    }
+
+
+    public static void main(String[] args) {
+        C_List c = new C_List();
+        System.out.println(c.reverseStr("abcdefg", 8));
+    }
+
 }

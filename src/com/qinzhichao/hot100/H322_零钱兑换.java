@@ -66,10 +66,11 @@ public class H322_零钱兑换 {
         int[] dp = new int[amount + 1];
         Arrays.fill(dp, max);
         dp[0] = 0;
-        for (int i = 0; i <= amount; i++) {
-            for (int j = 0; j < coins.length; j++) {
-                if (coins[j] <= i) {
-                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+
+        for (int coin : coins) {
+            for (int i = 1; i <= amount; i++) {
+                if (i >= coin) {
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
             }
         }

@@ -56,13 +56,67 @@ public class C_combination {
             if (target - candidates[index] < 0) {
                 break;
             }
-            if(index>i&&candidates[index]==candidates[index-1]){
+            if (index > i && candidates[index] == candidates[index - 1]) {
                 continue;
             }
             List<Integer> list = new ArrayList<>(num);
             list.add(candidates[index]);
             dfs(candidates, index + 1, res, target - candidates[index], list);
         }
+    }
+
+    /**
+     * 给你一个字符串 s，请你将 s 分割成一些子串，使每个子串都是回文串
+     * 返回 s 所有可能的分割方案。
+     * 思路：
+     * ①：暴力遍历
+     * ②：回溯
+     */
+    public List<List<String>> partition(String s) {
+        if (s == null || s.isEmpty()) {
+            return new ArrayList<>();
+        }
+        List<List<String>> ans = new ArrayList<>();
+        for (int i = 1; i <= s.length(); i++) {
+            bfs(s, ans, 0, i, new ArrayList<String>());
+        }
+        return ans;
+    }
+
+    private void bfs(String s, List<List<String>> ans, int start, int end, ArrayList<String> strings) {
+        if (end > s.length()) {
+            return;
+        }
+
+        String substring = s.substring(start, end);
+        char[] charArray = substring.toCharArray();
+        int left = 0;
+        int right = charArray.length - 1;
+        while (left <= right) {
+            if (charArray[left] != charArray[right]) {
+                return;
+            }
+            left++;
+            right--;
+        }
+        ArrayList<String> list = new ArrayList<>(strings);
+        list.add(substring);
+
+        if (end == s.length()) {
+            ans.add(list);
+            return;
+        }
+
+
+        for (int i = end + 1; i <= s.length(); i++) {
+            bfs(s, ans, end, i, list);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        C_combination cCombination = new C_combination();
+        System.out.println(cCombination.partition("cdd"));
     }
 
 }

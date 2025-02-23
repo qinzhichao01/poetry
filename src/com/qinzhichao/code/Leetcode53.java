@@ -61,11 +61,34 @@ public class Leetcode53 {
         return max;
     }
 
+
+    // 前缀和
+    public int maxSubArray4(int[] nums) {
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        int ans = nums[0];
+
+        int[] preSum = new int[nums.length];
+        preSum[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            preSum[i] = preSum[i - 1] + nums[i];
+        }
+        int min = 0;
+        for (int j : preSum) {
+            ans = Math.max(ans, j - min);
+            min = Math.min(j, min);
+        }
+        return ans;
+    }
+
+
+
     public static void main(String[] args) {
         Leetcode53 leetcode53 = new Leetcode53();
-        int[] nums = new int[]{5, 4, -1, 7, 8};
+        int[] nums = new int[]{-6, 7};
         int res = leetcode53.maxSubArray(nums);
-        int res2 = leetcode53.maxSubArray2(nums);
+        int res2 = leetcode53.maxSubArray4(nums);
         System.out.println(res);
         System.out.println(res2);
     }
