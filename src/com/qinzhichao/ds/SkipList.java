@@ -27,7 +27,7 @@ public class SkipList<T> {
                 if (node.right.key > key) {
                     node = node.right;
                 } else {
-                    node = node.right;
+                    node = node.down;
                 }
             }
         }

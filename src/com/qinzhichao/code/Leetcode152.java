@@ -24,7 +24,7 @@ public class Leetcode152 {
             maxF[i] = Math.max(maxF[i - 1] * nums[i], Math.max(nums[i], minF[i - 1] * nums[i]));
             minF[i] = Math.min(minF[i - 1] * nums[i], Math.min(nums[i], maxF[i - 1] * nums[i]));
         }
-        int ans = maxF[0];
+        int ans = Integer.MIN_VALUE;
         for (int i = 1; i < length; ++i) {
             ans = Math.max(ans, maxF[i]);
         }

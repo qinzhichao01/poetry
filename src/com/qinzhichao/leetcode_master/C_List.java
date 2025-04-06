@@ -27,9 +27,11 @@ public class C_List {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode listNode = reverseList(head.next);
-        head.next.next = head;
+        ListNode next = head.next;
+        ListNode listNode = reverseList(next);
+        next.next = head;
         head.next = null;
+
         return listNode;
     }
 

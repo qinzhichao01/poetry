@@ -206,6 +206,7 @@ public class TestList {
                 break;
             }
         }
+
         if (fast == null || fast.next == null) {
             return null;
         }
@@ -384,6 +385,7 @@ public class TestList {
 
         ListNode next = slow.next;
         slow.next = null;
+
         ListNode node1 = sortInList(next);
         ListNode node2 = sortInList(head);
         return merge(node1, node2);
